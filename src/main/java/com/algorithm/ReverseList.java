@@ -13,7 +13,7 @@ public class ReverseList {
         ListNode node4 = new ListNode(4);
         node3.next = node4;
         printListNode(node1);
-        printListNode(reverseList(node1));
+        printListNode(reverseList1(node1));
     }
 
     public static void printListNode(ListNode head) {
@@ -35,5 +35,16 @@ public class ReverseList {
         }
 
         return prev;
+    }
+
+    public static ListNode reverseList1(ListNode head) {
+
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode p = reverseList1(head.next);
+        head.next.next = head;
+        head.next = null;
+        return p;
     }
 }
